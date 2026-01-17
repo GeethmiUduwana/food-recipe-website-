@@ -10,11 +10,10 @@ pipeline {
 
         stage('Clone Repo') {
             steps {
-                git branch: 'main',
-                    credentialsId: "${SSH_CRED_ID}",
-                    url: 'git@github.com:GeethmiUduwana/food-recipe-website-.git'
+                // Use the HTTPS URL instead of git@github.com
+                git 'https://github.com/GeethmiUduwana/food-recipe-website-.git'
             }
-        }
+    }
 
         stage('Build Docker Image') {
             steps {
