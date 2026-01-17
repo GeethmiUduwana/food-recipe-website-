@@ -6,14 +6,14 @@ pipeline {
         SSH_CRED_ID = "github-ssh"
     }
 
-    stages {
-
-        stage('Clone Repo') {
-            steps {
-                // Use the HTTPS URL instead of git@github.com
-                git 'https://github.com/GeethmiUduwana/food-recipe-website-.git'
-            }
+    stage('Clone Repo') {
+    steps {
+        git branch: 'main',   // <-- make sure it says 'main'
+            credentialsId: 'github-pat',  // your HTTPS credential
+            url: 'https://github.com/GeethmiUduwana/food-recipe-website-.git'
     }
+}
+
 
         stage('Build Docker Image') {
             steps {
