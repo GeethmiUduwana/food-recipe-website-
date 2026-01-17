@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/food-recipe-website.git'
+                git 'https://github.com/GeethmiUduwana/food-recipe-website-.git'
             }
         }
 
