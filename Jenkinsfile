@@ -1,19 +1,17 @@
 pipeline {
     agent any
-
     environment {
         DOCKER_IMAGE = "food-recipe-site"
-        SSH_CRED_ID = "github-ssh"
     }
+    stages {
 
-    stage('Clone Repo') {
-    steps {
-        git branch: 'main',   // <-- make sure it says 'main'
-            credentialsId: 'github-pat',  // your HTTPS credential
-            url: 'https://github.com/GeethmiUduwana/food-recipe-website-.git'
-    }
-}
-
+        stage('Clone Repo') {
+            steps {
+                git branch: 'main',
+                    credentialsId: 'github-pat',  // HTTPS credential in Jenkins
+                    url: 'https://github.com/GeethmiUduwana/food-recipe-website-.git'
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
@@ -29,5 +27,5 @@ pipeline {
                 '''
             }
         }
-    }
-}
+    } // end stages
+} // end pipeline
